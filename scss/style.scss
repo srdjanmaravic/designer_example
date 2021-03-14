@@ -1,0 +1,308 @@
+@import url("https://fonts.googleapis.com/css?family=Pontano+Sans&display=swap");
+
+// variables
+$fontFamily: "Pontano Sans", sans-serif;
+$fontSize: 16px;
+$gray: #333333;
+$darkgray: #2e2e2e;
+$black: #000000;
+$yellow: #f3cd52;
+$lightgray: rgba(255, 255, 255, 0.4);
+$white: #fff;
+$transition: 0.3s ease;
+$py: 60px 0 100px;
+
+// mixins
+@mixin flex($justify, $align, $direction) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+@mixin btn {
+    border: none;
+    background: linear-gradient(rgba($white, 0.1), rgba($white, 0.1)),$yellow;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 20px 40px;
+    cursor: pointer;
+    transition: $transition;
+    &:hover {
+        background: $white;
+        transform: scale(1.1);
+    }
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    color: $lightgray;
+    background: $gray;
+    line-height: 1.7;
+}
+h2 {
+    color: $white;
+    font-size: 3rem;
+    text-align: center;
+    word-spacing: 2px;
+    margin-bottom: 15px;
+}
+h6 {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+a {
+    text-decoration: none;
+   
+}
+ul {
+    list-style: none;
+}
+.container {
+    width: 70%;
+    margin: 0 auto;
+    @media (max-width: 767px) {
+        width: 95%;
+    }
+}
+
+// nav
+nav {
+    background: linear-gradient(rgba($white, 0.1), rgba($white, 0.1)),$yellow;
+    position: fixed;
+    width: 100%;
+    color: $darkgray;
+    text-align: center;
+    z-index: 1;
+    ul {
+        margin: 0 auto;
+        @include flex(center, center,row);
+        @media (max-width: 767px) {
+            width: 95%;
+            @include flex(space-between, center,row);
+             
+        }
+        li {
+            padding: 30px 40px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-weight: 400;
+            letter-spacing: 2px;
+            
+            @media (max-width: 767px) {
+                padding: 20px 0px;
+                font-size: .9rem;
+            }
+            a {
+                color: $darkgray;
+                display: block;
+                transition: $transition;
+                &:hover {
+                    transform: scale(2);
+                }
+            }
+            
+        }
+    }
+}
+
+// HEader
+header {
+    background: linear-gradient(rgba($white, 0.1), rgba($white, 0.1)),$yellow;
+    padding-top: 150px;
+    article {
+        @include flex(center, center, column);
+        color: $black;
+        h1 {
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        h5 {
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 75px;
+        }
+        div {
+            width: 100%;
+            padding: 30px 30px 0;
+            background: $white;
+            @media (max-width: 767px) {
+                padding: 15px 15px 0;
+            }
+        }
+        img {
+            width: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.9;
+        }
+    }
+}
+// about
+.about .container,
+.portfolio .container,
+.contact .container {
+    border-bottom: 1px solid $lightgray;
+    
+}
+.about {
+    padding: $py;
+    .container {
+        @include flex(space-between,center ,row );
+    text-align: center;
+    
+    @media (max-width: 767px) {
+        flex-direction: column;
+    }
+    .col {
+        flex:0 0 30%;
+        padding-bottom: 100px;
+        
+        button {
+            @include btn;
+           
+        }
+        h3 {
+         font-size: 2rem;
+         font-weight: 700;
+         color: $white;
+         display: block;
+         margin-bottom: 30px;
+     }
+     p {
+         font-weight: 600;
+         display: block;
+         margin-bottom: 20px;
+     }
+    }
+
+    }
+   
+}
+// portfolio
+.portfolio {
+    .container {
+        @include flex(space-between,center ,row );
+    text-align: center;
+    
+    @media (max-width: 767px) {
+        flex-direction: column;
+    }
+    .col {
+        flex: 0 0 22%;
+        padding-bottom: 100px;
+        img {
+            width: 100%;
+        }
+        button {
+            @include btn;
+        }
+        h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: $white;
+            display: block;
+            margin-bottom: 30px;
+        }
+        p {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+}
+// contact
+.contact {
+   
+    form {
+        max-width: 760px;
+        width: 100%;
+        margin: 0 auto;
+        @include flex(center, center, column);
+        input,
+        textarea {
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: $darkgray;
+            padding: 20px;
+            font-family: $fontFamily;
+            font-size: 1.2rem;
+            font-weight: 400;
+            border: none;
+        }
+        input::placeholder {
+            color: $lightgray;
+        }
+        textarea::placeholder {
+            color: $lightgray;
+        }
+        textarea {
+            height: 285px;
+            resize: none;
+            overflow: auto;
+        }
+        button {
+            @include btn;
+            margin-bottom: 90px;
+        }
+    }
+    div {
+        text-align: center;
+        padding-bottom: 50px;
+        
+        a {
+            @media (max-width: 767px) {
+                margin-right: 10px;
+            }
+            margin-right: 40px;
+            padding: 20px;
+            background: linear-gradient(rgba($white, 0.1), rgba($white, 0.1)),$yellow;
+            
+            i {
+                color: $darkgray;
+                font-size: 1.3rem;
+                transition: $transition;
+            }
+            &:last-child {
+                margin-right: 0px;
+            }
+            &:hover {
+                background: rgba($white, 0.5);
+                i {
+                    transform: rotate(360deg);
+                     
+                }
+            }
+        }
+    }
+    
+
+}
+// Footer
+footer {
+    padding: 50px 0 100px;
+    text-align: center;
+    p {
+        font-size: 1.05rem;
+        font-weight: 400;
+        a {
+            transition: $transition;
+            color: $lightgray;
+            &:hover {
+                color: $white;
+            }
+        }
+    }
+}
